@@ -1,0 +1,91 @@
+.price-container {
+    max-width:100%;
+    margin: auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.price-section select{
+    width: 103%;
+}
+.price-section, .price-extra-section {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.price-heading {
+    text-align: start;
+    margin-bottom: 15px;
+    color: #facc14;
+    font-size: 24px;
+
+}
+
+.price-select, .price-input, .price-textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.price-textarea {
+    resize: vertical;
+    height: 60px;
+}
+
+.price-btn {
+    width: fit-content;
+    background: #0d9488;
+    color: white;
+    border: none;
+    padding: 16px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.price-btn:hover {
+    background: #0d9488d5;
+}
+
+.price-delete-btn {
+    background: #dc3545 !important;
+    margin-left: 10px;
+}
+
+.price-delete-btn:hover {
+    background: #ffffff !important;
+}
+
+.price-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.price-list-item {
+    background: #1f1f1f;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.price-list-item button {
+    background: transparent !important;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: red;
+    width:fit-content
+}

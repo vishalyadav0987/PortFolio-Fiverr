@@ -1,0 +1,133 @@
+.pricing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  
+  .plan-switcher {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .plan-btn {
+    background: #222;
+    color: white;
+    border: 1px solid #444;
+    padding: 10px 46px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .plan-btn.active {
+    background: #0d9488;
+    border-color: #0d9488;
+  }
+  
+  .single-gig-card {
+    background: #222;
+    padding: 28px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 450px;
+  }
+  
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: unset !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .title span {
+    color: #0d9488;
+    font-weight: bold;
+  }
+  
+  .short-description {
+    font-size: 14px;
+    color: #bbb;
+  }
+  
+  .delivery-revisions {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+  }
+  
+  .icon-text {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .features-section {
+    margin-top: 10px;
+  }
+  
+  .features-toggle {
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+  }
+  
+  .features-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.8s ease-in-out, opacity 0.5s ease-in-out;
+  }
+  
+  .features-list li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 0;
+    color: #8c8c8c;
+    font-size: 14px;
+  }
+  
+  .check-icon {
+    color: #0d9488;
+  }
+  
+  .contact-btn {
+    width: 100%;
+    background: #0d9488;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: background 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .contact-btn:hover {
+    background: #0d9489bd;
+  }
+  
+  /* Feature dropdown animation */
+  .features-section .features-list.open {
+    max-height: 500px;
+    opacity: 1;
+  }
+  

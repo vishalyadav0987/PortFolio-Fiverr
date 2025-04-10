@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+html{
+overflow-x: hidden;
+scroll-behavior: smooth;
+
+}
+body{
+    background: #09090b;
+    color: white;
+    position: relative;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+a{
+    text-decoration: none;
+    color: unset;
+}
+
+
+
+/* Target the library's wrapper element */
+.toaster {
+    position: relative;  /* Required for absolute positioning */
+    background-color:#1a272c !important;
+    color: white !important;
+    padding: 16px 24px !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    gap: 12px !important;
+  }
+  
+  /* Icon styling */
+  .toaster-icon {
+    width: 20px !important;
+    height: 20px !important;
+    margin-inline-end: 12px !important;
+  }
+  
+  .toaster-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: inherit;
+  }
+  
+  .toaster-close-icon {
+    width: 16px;
+    height: 16px;
+    transition: opacity 0.2s ease;
+  }
+  
+  .toaster-close:hover .toaster-close-icon {
+    opacity: 0.8;
+    color: white;
+    fill: white;
+  }
+
+  :root {
+    /* Primary Colors */
+    --primary-color: #2563EB; /* Bold blue for primary actions */
+    --secondary-color: #0D9488; /* Teal for secondary actions */
+    --success-color: #16A34A; /* Green for success states */
+    --error-color: #DC2626; /* Red for errors/warnings */
+  
+    /* Backgrounds */
+    --profile-bg: #F3F4F6; /* Light gray for profile/card backgrounds */
+    --hover-bg: #E5E7EB; /* Soft gray for hover states */
+    --section-divider-bg: #F9FAFB; /* Near-white for section dividers */
+  
+    /* Typography */
+    --primary-text: #1F2937; /* Dark gray for primary text */
+    --secondary-text: #4B5563; /* Medium gray for secondary text */
+    --disabled-text: #9CA3AF; /* Light gray for disabled text */
+  
+    /* Accents & Highlights */
+    --accent-color: #7C3AED; /* Vibrant purple for links/icons */
+    --border-color: #E5E7EB; /* Light gray for borders/outlines */
+    --highlight-bg: #DBEAFE; /* Soft blue for subtle highlights */
+  }
+  

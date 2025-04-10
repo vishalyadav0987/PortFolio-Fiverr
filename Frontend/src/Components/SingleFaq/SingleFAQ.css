@@ -1,0 +1,37 @@
+.single-gig-faq {
+    width: 100%;
+    margin: auto;
+  }
+  
+  .single-gig-faq-item {
+    background-color: #1e1e1e;
+    color: #fff;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .single-gig-faq-item:hover {
+    background-color: #292929;
+  }
+  
+  .single-gig-faq-question {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .single-gig-faq-answer-container {
+    overflow: hidden;
+  }
+  
+  .single-gig-faq-answer {
+    padding-top: 8px;
+    font-size: 16px;
+    color: #bbb;
+  }
+  

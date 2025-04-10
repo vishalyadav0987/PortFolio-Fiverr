@@ -1,0 +1,76 @@
+#topreview{
+    width: 100vw;
+    height: 100%;
+    font-family: "Inter", sans-serif;
+    border-bottom: 1px solid #c5c5c584;
+    padding-bottom: 80px;
+}
+
+.topreview-container{
+    width: 100%;
+    height: 100%;
+    padding-top: 40px;
+}
+
+.topreview-container h2:nth-child(1){
+    font-size: 32px;
+    line-height: 3.75rem;
+    letter-spacing: 0.025em;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    margin-bottom: 60px;
+}
+
+.topreview-container h2:nth-child(1) span{
+    display: inline-block;
+    background-color: #0f201f;
+    color: #5eead4;
+    padding: 0 8px;
+    border-right: 3px solid #5eead4;
+    border-radius: 4px 0 0 4px;
+}
+
+.topreview-box{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.topreview{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 48px;
+    border: 1px solid #001b18;
+    background-color: #09090b;
+}
+
+.topreview p:nth-child(1){
+    font-size: 16px;
+    white-space: pre-wrap;
+    color: #a1a1aa;
+    line-height: 1.355;
+}
+
+.topreview-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topreview-name p:nth-child(1){
+    color: #FAFAFA;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.topreview-name p:nth-child(2){
+    color: #A1A1A1;
+    font-size: 14px;
+}
+
+.topreview-info img{
+    border-radius: 10px;
+}

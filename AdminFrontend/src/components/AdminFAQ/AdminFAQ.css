@@ -1,0 +1,87 @@
+/* AdminFAQ.css */
+
+/* Container Styles */
+.FAQ-container, .FAQ-ProjectDetails-container {
+    width: 100%;
+    max-width: 96%;
+    margin: auto;
+    padding: 20px 10px;
+    border-radius: 8px;
+}
+
+/* Headings */
+.FAQ-container h3, .FAQ-ProjectDetails-container h3 {
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #facc14;
+}
+
+/* Input Fields */
+.FAQ-container input,
+.FAQ-container select,
+.FAQ-container textarea,
+.FAQ-ProjectDetails-container input,
+.FAQ-ProjectDetails-container select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Button Styles */
+.FAQ-container button {
+    background: #0d9488;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+}
+
+.FAQ-container button:hover {
+    background: #0d9488d5;
+}
+
+/* FAQ List Items */
+.FAQ-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.FAQ-container ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-direction: column;
+    background: #1f1f1f;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    gap: 10px;
+}
+
+/* Delete Button */
+.FAQ-delete-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.FAQ-delete-btn:hover {
+    background: darkred;
+}
+
+/* Project Details Section */
+.FAQ-ProjectDetails-container {
+    padding-top: 20px;
+}

@@ -1,0 +1,47 @@
+.enter-details {
+    padding: 20px 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  .enter-details h2 {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 22px;
+    color: #333;
+  }
+  
+  .input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 16px;
+    border-radius: 5px;
+    width: 96%;
+    border: 1px solid white;
+  }
+  
+  .icon {
+    color: #666666;
+    font-size: 18px;
+  }
+  
+  .input-group input, .input-group textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    padding: 5px;
+    width: 100%;
+
+  }
+  
+  textarea {
+    resize: none;
+    height: 60px;
+  }
+  

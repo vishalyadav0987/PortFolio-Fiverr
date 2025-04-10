@@ -1,0 +1,92 @@
+.users-list-container {
+    color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+.users-list-title {
+    color: #5eead4;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.users-list-table-container {
+    overflow-x: auto;
+    border: 1px solid #242429;
+    border-radius: 6px;
+}
+
+.users-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+.users-list-table-header {
+    background-color: #1a272c;
+}
+
+.users-list-header-cell {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 500;
+    color: #5eead4;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.users-list-table-body {
+    background-color: #18181f;
+}
+
+.users-list-row {
+    border-bottom: 1px solid #242429;
+    transition: background-color 0.2s;
+}
+
+.users-list-row:hover {
+    background-color: #1a1a23;
+}
+
+.users-list-cell {
+    padding: 1.2rem 1rem;
+    color: #e5e7eb;
+    font-size: 0.95rem;
+}
+
+.users-list-user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.users-list-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #0d9488;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.users-list-serial {
+    width: 60px;
+    color: #6b7280;
+}
+
+.users-list-name {
+    min-width: 200px;
+}
+
+.users-list-email {
+    min-width: 250px;
+}
+
+.users-list-joined {
+    white-space: nowrap;
+}

@@ -1,0 +1,97 @@
+body {
+  background-color: #0a0a0f;
+  color: #EAEAEA;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.admin-container {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  transition: grid-template-columns 0.3s ease-in-out;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #0a0a0f;
+  overflow-y: scroll;
+  transition: background-color 0.3s ease-in-out;
+  border-left: 1px solid #242429;
+
+}
+
+.main-content::-webkit-scrollbar{
+  display: none;
+}
+
+.page-content {
+  flex: 1;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Target the library's wrapper element */
+.toaster {
+  position: relative;  /* Required for absolute positioning */
+  background-color:#1a272c !important;
+  color: white !important;
+  padding: 16px 24px !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  gap: 12px !important;
+}
+
+/* Icon styling */
+.toaster-icon {
+  width: 20px !important;
+  height: 20px !important;
+  margin-inline-end: 12px !important;
+}
+
+.toaster-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: inherit;
+}
+
+.toaster-close-icon {
+  width: 16px;
+  height: 16px;
+  transition: opacity 0.2s ease;
+}
+
+.toaster-close:hover .toaster-close-icon {
+  opacity: 0.8;
+  color: white;
+  fill: white;
+}

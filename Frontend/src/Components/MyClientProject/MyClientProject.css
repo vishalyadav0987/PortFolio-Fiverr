@@ -1,0 +1,149 @@
+#my-client-pro{
+    height: 100%;
+    width: 100vw;
+    font-family: "Inter", sans-serif;
+    padding-top: 48px;
+    border-bottom: 1px solid #6a6a6b;
+
+}
+
+.my-client-pro-container{
+    width: 95%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    position: relative;
+}
+
+.my-client-pro-top-tag-new{
+    color: #5eead4;
+    background-color: #0e1a1b;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    width: fit-content;
+    
+}
+.my-client-pro-top-tag-new span{
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: 0.025em;
+}
+
+.my-client-pro-left-hero-heading h1{
+    font-size: 48px;
+    line-height: 3.75rem;
+    letter-spacing: 0.025em;
+    margin-bottom: 16px;
+}
+
+.my-client-pro-left-hero-heading h1 span{
+    display: inline-block;
+    background-color: #0f201f;
+    color: #5eead4;
+    padding: 0 8px;
+    border-right: 3px solid #5eead4;
+    border-radius: 4px 0 0 4px;
+}
+
+.my-client-pro-short-about-me{
+    font-size: 18px;
+    line-height: 1.875rem;
+    color: #a1a1aa;
+    max-width: 50rem;
+    margin-bottom: 42px;
+}
+.my-client-pro-short-about-me span{
+    color: white;
+}
+
+/*------ Card ------*/
+
+.my-client-pro-projects-box{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    gap: 28px;
+    padding-bottom: 72px;
+}
+
+.my-client-pro-projects-box-item{
+    display: flex;
+    gap: 24px;
+    width: 650px;
+    height: 300px;
+    border: 1px solid #444446;
+    border-radius: 12px;
+    padding: 18px;
+    align-items: center;
+    box-shadow: 1px 3px 10px #0e1a1b;
+}
+
+.my-client-pro-projects-box-item .left{
+    display: flex;
+    align-items: center;
+}
+.my-client-pro-projects-box-item .left img{
+    width: 300px;
+    height: 260px;
+    border-radius: 8px;
+}
+
+.my-client-pro-projects-box-item .right{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.my-client-pro-projects-box-item .right .client-pro-date{
+    font-size: 14px;
+    color: #74767e;
+}
+.my-client-pro-projects-box-item .right .client-pro-heading{
+    font-size: 22px;
+    color: #ffffff;
+}
+.my-client-pro-projects-box-item .right .client-pro-desc{
+    font-size: 13px;
+    color: #74767e;
+}
+
+.client-pro-tech-stack{
+    display: flex;
+    gap: 8px;
+}
+
+.client-pro-tech-stack span{
+    display: inline-block;
+    font-size: 14px;
+    border: 1px solid #444;
+    color: #74767e;
+    border-radius: 50px;
+    height: 32px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.client-pro-price-details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.client-pro-price-details div{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.client-pro-price-details div span:nth-child(1){
+    color: #74767e;
+    font-size: 12px;
+}
+.client-pro-price-details div span:nth-child(2){
+    color: #ffffff;
+    font-size: 16px;
+}

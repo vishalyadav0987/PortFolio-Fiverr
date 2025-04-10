@@ -1,0 +1,84 @@
+#template{
+    width: 100vw;
+    height: 100%;
+    font-family: "Inter", sans-serif;
+    border-bottom: 1px solid #c5c5c584
+}
+
+.template-container{
+    width: 100%;
+    height: 100%;
+    padding-top: 72px;
+    position: relative;
+}
+
+.template-container .chakra-icon{
+    position: absolute;
+    color: black;
+    left: -48px;
+    top: -4px;
+    z-index: -1;
+}
+
+.template-heading {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.template-heading h2:nth-child(1){
+    font-size: 48px;
+    line-height: 3.75rem;
+    letter-spacing: 0.025em;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+}
+
+.template-heading h2:nth-child(1) span{
+    display: inline-block;
+    background-color: #0f201f;
+    color: #5eead4;
+    padding: 0 8px;
+    border-right: 3px solid #5eead4;
+    border-radius: 4px 0 0 4px;
+    margin-top: 4px;
+}
+
+.template-heading h2:nth-child(2){
+    font-size: 20px;
+    line-height: 1.875rem;
+    color: #a1a1aa;
+    max-width:42rem;
+    margin-bottom: 42px;
+    font-family: "Inter", sans-serif;
+    font-weight: normal;
+    text-align: center;
+}
+.template-heading h2:nth-child(2) span{
+    color: white;
+}
+
+
+.template-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 10px;
+    padding-bottom: 100px;
+}
+
+.template svg{
+    width: 60px;
+    height: 60px;
+    fill: white;
+}
+
+.template{
+    border: 1px solid #001B18;
+    padding: 60px;
+    background-color: #020202;
+}

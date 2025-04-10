@@ -1,0 +1,100 @@
+#stats{
+    width: 100vw;
+    height: 100vh;
+    font-family: "Inter", sans-serif;
+    border-bottom: 1px solid #c5c5c584
+}
+
+.container-stats{
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    position: relative;
+    padding-top: 80px;
+}
+.chakra-icon.css-15z0y3i{
+    position: absolute;
+    width: 245px;
+    height: 342px;
+    position: absolute;
+    top: -72px;
+    right: 67px;
+    color: rgba(115, 115, 115, 0.12);
+    z-index: -1;
+}
+.stat-heading {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.stat-heading h2:nth-child(1){
+    font-size: 48px;
+    line-height: 3.75rem;
+    letter-spacing: 0.025em;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+}
+
+.stat-heading h2:nth-child(1) span{
+    display: inline-block;
+    background-color: #0f201f;
+    color: #5eead4;
+    padding: 0 8px;
+    border-right: 3px solid #5eead4;
+    border-radius: 4px 0 0 4px;
+    margin-top: 4px;
+}
+
+.stat-heading h2:nth-child(2){
+    font-size: 20px;
+    line-height: 1.875rem;
+    color: #a1a1aa;
+    max-width:42rem;
+    margin-bottom: 42px;
+    font-family: "Inter", sans-serif;
+    font-weight: normal;
+    text-align: center;
+}
+.stat-heading h2:nth-child(2) span{
+    color: white;
+}
+
+.stat-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    border: 1px solid #001b18;
+    padding: 44px 120px;
+    background-color: #0c1011;
+}
+
+.stat .counting{
+    font-size: 72px;
+    color: #5eead4;
+}
+.stat .icon-info{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.stat .icon-info svg{
+    fill: #5eead4;
+}
+.stat .icon-info span{
+    display: inline-block;
+    color: #A1A1A1;
+    font-size: 16px;
+}

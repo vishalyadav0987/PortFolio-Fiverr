@@ -1,0 +1,184 @@
+/* Profile Page Styles */
+.Profile-Page__container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #111118;
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    margin-top: 140px;
+  }
+  
+  .Profile-Page__header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  
+  .Profile-Page__avatar-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .Profile-Page__avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #5eead4;
+    object-fit: cover;
+    box-shadow: 0 0 20px rgba(94,234,212,0.3);
+  }
+  
+  .Profile-Page__verification {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: #0d9488;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 2px solid #fff;
+  }
+  
+  .Profile-Page__verification.verified {
+    background: #5eead4;
+    color: #0f201f;
+  }
+  
+  .Profile-Page__name {
+    font-size: 2.5rem;
+    margin: 1rem 0 0.5rem;
+    color: #5eead4;
+  }
+  
+  .Profile-Page__email {
+    color: #888;
+    font-size: 1.1rem;
+  }
+  
+  .Profile-Page__stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .Profile-Page__stat-card {
+    background: #18181f;
+    padding: 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    border: 1px solid #0d9488;
+    transition: transform 0.3s ease;
+  }
+  
+  .Profile-Page__stat-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .stat-icon {
+    font-size: 2rem;
+    color: #5eead4;
+  }
+  
+  .stat-info h3 {
+    color: #888;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .stat-info p {
+    font-size: 1.4rem;
+    color: #fff;
+  }
+  
+  .Profile-Page__section-title {
+    color: #5eead4;
+    border-bottom: 2px solid #0d9488;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .Profile-Page__detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid #1a2a2a;
+  }
+  
+  .Profile-Page__detail-item span:first-child {
+    color: #888;
+  }
+  
+  .status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+  
+  .status.verified {
+    background: rgba(94,234,212,0.1);
+    color: #5eead4;
+  }
+  
+  .status.pending {
+    background: rgba(255,165,0,0.1);
+    color: #ffa500;
+  }
+  
+  .Profile-Page__orders-list {
+    margin-top: 1.5rem;
+  }
+  
+  .Profile-Page__order-card {
+    background: #18181f;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid #5eead4;
+  }
+  
+  .order-info h4 {
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
+  
+  .order-date {
+    color: #888;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .Profile-Page__container {
+      padding: 1rem;
+      margin: 1rem;
+    }
+    
+    .Profile-Page__name {
+      font-size: 2rem;
+    }
+    
+    .Profile-Page__stat-card {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .Profile-Page__order-card {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }

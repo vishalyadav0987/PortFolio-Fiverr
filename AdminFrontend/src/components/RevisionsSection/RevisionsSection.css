@@ -1,0 +1,151 @@
+/* Revisions Section */
+.revisions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .revisions-progress {
+    width: 300px;
+  }
+  
+  .progress-text {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #5eead4;
+  }
+  
+  .progress-text .used { color: #5eead4; }
+  .progress-text .max { color: #0d9488; }
+  
+  .revision-item {
+    background: #242429;
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid;
+    transition: transform 0.2s ease;
+  }
+  
+  .revision-item:hover {
+    transform: translateX(5px);
+  }
+  
+  .revision-item.Pending { border-color: #5eead4; }
+  .revision-item.Approved { border-color: #0d9488; }
+  .revision-item.Rejected { border-color: #ff4757; }
+  .revision-item.Completed { border-color: #2ed573; }
+  
+  .revision-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .status-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+  
+  .status-badge.Pending { background: rgba(94, 234, 212, 0.1); }
+  .status-badge.Approved { background: rgba(13, 148, 136, 0.1); }
+  .status-badge.Rejected { background: rgba(255, 71, 87, 0.1); }
+  .status-badge.Completed { background: rgba(46, 213, 115, 0.1); }
+  
+  .revision-details {
+    display: grid;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .timestamps {
+    display: flex;
+    gap: 0.2rem;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    flex-direction: column;
+  }
+
+  .timestamps span{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .timestamps span:nth-child(2){
+    color:#2fd573;
+  }
+  
+  .revision-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    border-top: 1px solid #242429;
+    padding-top: 1rem;
+  }
+  
+  .status-select {
+    background: #18181f;
+    color: white;
+    border: 1px solid #5eead4;
+    padding: 0.5rem;
+    border-radius: 6px;
+    width: 200px;
+  }
+  
+  .note-btn {
+    background: none;
+    border: 1px solid #5eead4;
+    color: #5eead4;
+  }
+  
+  .revision-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: grid;
+    place-items: center;
+  }
+  
+  .dialog-content {
+    background: #18181f;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 600px;
+  }
+  
+  .dialog-content textarea {
+    width: 100%;
+    height: 150px;
+    background: #242429;
+    border: none;
+    color: white;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  .revisions-section.section-card{
+    padding: 1.5rem 1.1rem;
+    margin-top: 60px;
+  }
+
+  .revisions-section .revision-list{
+    display: grid;
+    grid-template-columns: repeat(3,340px);
+    gap: 1rem;
+  }

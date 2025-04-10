@@ -1,0 +1,28 @@
+.portfolio-logo {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .portfolio-logo:hover {
+    transform: scale(1.015);
+    
+    .main-icon {
+      filter: drop-shadow(0 2px 8px rgba(13, 148, 136, 0.2));
+    }
+  }
+  
+  @keyframes gradient-pulse {
+    0% { opacity: 0.95; }
+    50% { opacity: 1; }
+    100% { opacity: 0.95; }
+  }
+  
+  .main-icon {
+    animation: gradient-pulse 6s ease-in-out infinite;
+  }
+  
+  .logo-text text:first-child {
+    paint-order: stroke;
+    stroke: #0d9488;
+    stroke-width: 1.2px;
+    stroke-linejoin: round;
+  }

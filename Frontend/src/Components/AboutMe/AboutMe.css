@@ -1,0 +1,83 @@
+#about-me{
+    height: calc(100vh - 80px);
+    width: 100vw;
+    margin-top: 85px;
+    font-family: "Inter", sans-serif;
+    border-bottom: 1px solid #c5c5c584;
+}
+
+.about-me-container{
+    width: 95%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    position: relative;
+}
+
+.about-me-container .chakra-icon.css-15z0y3i{
+    position: absolute;
+    color: black;
+    top: 0px;
+}
+
+.about-me-container h1{
+    font-size: 56px;
+    line-height: 3.75rem;
+    letter-spacing: 0.025em;
+    margin-bottom: 16px;
+}
+
+.about-top-tag-new{
+    color: #5eead4;
+    background-color: #0e1a1b;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    width: fit-content;
+    
+}
+.about-top-tag-new span{
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: -0.025em;
+}
+
+.about-me-container p{
+    font-size: 18px;
+    line-height: 1.754rem;
+    color: #a1a1aa;
+    max-width: 50rem;
+    margin-bottom: 24px;
+}
+
+.overview-card-box{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 24px;
+}
+
+.overview-card{
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
+    border-radius: 6px;
+    padding: 72px 36px;
+}
+
+.overview-card span{
+    display: inline-block;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+
+.overview-card img{
+    width: 60px;
+}

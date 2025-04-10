@@ -1,0 +1,233 @@
+/* Base Styles */
+.project-management-container {
+    background-color: #111118;
+    border-radius: 8px;
+    padding: 1.5rem;
+    color: #e2e8f0;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  
+  .header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .page-title {
+    color: #5eead4;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #18181f;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    min-width: 250px;
+  }
+  
+  .search-bar input {
+    background: transparent;
+    border: none;
+    color: white;
+    margin-left: 0.5rem;
+    width: 100%;
+    outline: none;
+  }
+  
+  .search-icon {
+    color: #5eead4;
+  }
+  
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    color: #5eead4;
+  }
+  
+  /* Table Styles */
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  .projects-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #18181f;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .projects-table th,
+  .projects-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #1a272c;
+  }
+  
+  .projects-table th {
+    background-color: #0a0a0f;
+    color: #5eead4;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+  
+  .projects-table tr:hover {
+    background-color: #1a272c;
+  }
+  
+  .project-title {
+    font-weight: 500;
+    color: white;
+  }
+  
+  /* Tech Tags */
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+  
+  .tech-tag {
+    background-color: #1a272c;
+    color: #5eead4;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+  }
+  
+  .tech-tag-more {
+    background-color: #0d9488;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+  }
+  
+  /* Timeframe */
+  .timeframe {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  
+  /* Action Buttons */
+  .action-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .action-buttons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  
+  .view-btn {
+    color: #5eead4;
+  }
+  
+  .view-btn:hover {
+    background-color: rgba(94, 234, 212, 0.1);
+  }
+  
+  .edit-btn {
+    color: #60a5fa;
+  }
+  
+  .edit-btn:hover {
+    background-color: rgba(96, 165, 250, 0.1);
+  }
+  
+  .delete-btn {
+    color: #f87171;
+  }
+  
+  .delete-btn:hover {
+    background-color: rgba(248, 113, 113, 0.1);
+  }
+  
+  /* Pagination */
+  .pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .pagination-btn {
+    background-color: #18181f;
+    border: 1px solid #1a272c;
+    color: #e2e8f0;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  
+  .pagination-btn:hover:not(:disabled) {
+    background-color: #1a272c;
+    border-color: #0d9488;
+  }
+  
+  .pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .pagination-btn.active {
+    background-color: #0d9488;
+    border-color: #0d9488;
+    color: white;
+  }
+  
+  /* No Projects */
+  .no-projects {
+    text-align: center;
+    padding: 2rem;
+    color: #94a3b8;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .header-section {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .search-bar {
+      width: 100%;
+    }
+    
+    .projects-table th,
+    .projects-table td {
+      padding: 0.5rem;
+      font-size: 0.875rem;
+    }
+    
+    .action-buttons {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
