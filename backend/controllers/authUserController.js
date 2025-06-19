@@ -153,7 +153,10 @@ const loginUser = async (req, res) => {
         user.lastLogin = new Date();
         await user.save();
 
-        generateAndSetToken(user._id, res);
+        const token = generateAndSetToken(user._id, res);
+        console.log(token);
+        
+        
 
         res.status(200).json({
             success: true,
