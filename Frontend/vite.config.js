@@ -7,12 +7,14 @@ export default defineConfig({
   define: {
     global: {},
   },
-  server:{
+  server: {
     port: 5173,
-    proxy:{
-      '/api':{
-      target: 'https://portfolio-fiverr.onrender.com',
-    }
+    proxy: {
+      '/api': {
+        target: 'https://portfolio-fiverr.onrender.com',
+        changeOrigin: true,
+        secure: false,
+      }
     }
   }
 })
