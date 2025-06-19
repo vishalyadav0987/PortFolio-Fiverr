@@ -56,9 +56,12 @@ const App = () => {
     const checkTokenAndAuth = async () => {
       try {
         // Check if token exists
-        const { data } = await axios.get('/api/v1/user/check-token', {
+        const { data } = await axios.get('https://portfolio-fiverr-1.onrender.com/api/v1/user/check-token', {
           withCredentials: true
         });
+
+        console.log(data.hasToken);
+        
 
         if (data.hasToken) {
           await checkAuthUser(); // Validate the user if token exists
