@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import  { useEffect } from 'react';
 import { format } from 'date-fns';
 import './ProfilePage.css'
 import { useAuthContext } from '../../Context/AuthContext';
