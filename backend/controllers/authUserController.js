@@ -58,7 +58,6 @@ const registerUser = async (req, res) => {
         const adminNotification = await NotificationSchema.create({
             type: 'new_user_joined',
             message: `New user alert: ${newUser.name} (${newUser.email}) has joined ${"VY"}. 🎉`,
-            orderId: "",
             buyerId: newUser._id
         });
 

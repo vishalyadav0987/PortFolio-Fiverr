@@ -39,7 +39,7 @@ const SignUp = () => {
       const { name, email, password } = formData;
       const dataToSend = { name, email, password, avatar: profileImage };
 
-      const { data } = await axios.post("https://portfolio-fiverr.onrender.com/api/v1/user/sign-up", dataToSend, {
+      const { data } = await axios.post("/api/v1/user/sign-up", dataToSend, {
         headers: { "Content-Type": "application/json" },
         withCredentials: true, // ✅ Ensures cookies are properly set
       });
