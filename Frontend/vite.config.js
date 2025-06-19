@@ -11,9 +11,7 @@ export default defineConfig({
     port: 5173,
     proxy:{
       '/api':{
-      target: 'https://portfolio-fiverr.onrender.com',
-      changeOrigin: true,
-        secure: false, 
+      target: 'http://localhost:4000',
     }
     }
   }
