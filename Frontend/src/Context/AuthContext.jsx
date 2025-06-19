@@ -16,7 +16,7 @@ export const AuthContextProvider = ({ children }) => {
   const checkAuthUser = async () => {
     setIsCheckingAuth(true);
     try {
-      const { data } = await axios.get('http://localhost:4000/api/v1/user/check-auth-user', {
+      const { data } = await axios.get('https://portfolio-fiverr.onrender.com/api/v1/user/check-auth-user', {
         withCredentials: true, 
       });
 
