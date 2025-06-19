@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaGoogle, FaGithub, FaEnvelope, FaLock } from 'react-icons/fa';
 import './Auth.css';
 import { useAuthContext } from '../../Context/AuthContext';
-import axios from 'axios';
+import axiosInstance from '../../axiosConfig';
 import toast from 'react-hot-toast';
 import Spinner from '../../Components/Spinner/Spinner';
 
@@ -18,11 +18,10 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post(
-        'https://portfolio-fiverr.onrender.com/api/v1/user/sign-in',
+      const response = await axiosInstance.post(
+        '/user/sign-in',
         { email:formData.email, password:formData.password},
-        { headers: { "Content-Type": "application/json" },withCredentials: true } // ✅ Ensures cookies are properly set,
-      
+        { headers: { "Content-Type": "application/json" }}
       );
       if (response.data.success) {
         setIsAuthenticate(true);

@@ -15,7 +15,7 @@ import useFetchGigs from '../../CustomHook/useFetchGig';
 import profileImage from '../../assets/vishal.jpeg'
 import { useAuthContext } from '../../Context/AuthContext';
 import { Rating } from '@mui/material';
-import axios from 'axios';
+import axiosInstance from '../../axiosConfig';
 
 
 
@@ -144,7 +144,7 @@ const SingleGig = ({ setDropdownOpen }) => {
     const addRatingHandle = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`/api/v1/gig/review`, {
+            const response = await axiosInstance.post(`/gig/review`, {
                 gigId,
                 rating,
                 comment

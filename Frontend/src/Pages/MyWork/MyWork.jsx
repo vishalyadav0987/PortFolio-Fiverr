@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import AboutMe from '../../Components/AboutMe/AboutMe'
 import MyClientProject from '../../Components/MyClientProject/MyClientProject.jsx'
 import './MyWork.css'
-import axios from 'axios'
+import axiosInstance from '../../axiosConfig';
 import toast from 'react-hot-toast'
 
 const MyWork = ({ setDropdownOpen }) => {
@@ -12,7 +12,7 @@ const MyWork = ({ setDropdownOpen }) => {
     const fetchClientProject = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('/api/v1/client/get-project');
+        const response = await axiosInstance.get('/client/get-project');
         if (response.data.success) {
           setAllProjects(response.data.data)
         }

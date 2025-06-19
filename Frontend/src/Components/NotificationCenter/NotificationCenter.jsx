@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FiBell, FiX, FiPackage, FiDollarSign, FiRefreshCw, FiMessageSquare } from 'react-icons/fi';
 import { useSocketContext } from '../../Context/SocketContext';
-import axios from 'axios';
+import axiosInstance from '../../axiosConfig';
 import './Notification.css';
 import toast from 'react-hot-toast'
 import {
@@ -45,8 +45,7 @@ const NotificationCenter = () => {
     useEffect(() => {
         const fetchNotifications = async () => {
             try {
-                const { data } = await
-                    axios.get(`/api/v1/notify/client/client-notifications/${authUser?._id}`);
+                const { data } = await axiosInstance.get(`/notify/client/client-notifications/${authUser?._id}`);
                 setNotifications(data.notifications);
                 setUnreadCount(data.notifications.filter(n => !n.isRead).length);
             } catch (error) {
@@ -103,7 +102,7 @@ const NotificationCenter = () => {
     const handleNotificationClick = async (id) => {
 
         try {
-            const { data } = await axios.post(`/api/v1/notify/client/client-mark-read/${id}`);
+            const { data } = await axiosInstance.post(`/notify/client/client-mark-read/${id}`);
             if(data.success){
                 toast.success('Message marked as seen', {
                     className: 'toaster',
@@ -135,7 +134,7 @@ const NotificationCenter = () => {
 
     const handleMarkAllRead = async () => {
         try {
-            const { data } = await axios.post("/api/v1/notify/client/client-mark-all-read");
+            const { data } = await axiosInstance.post("/notify/client/client-mark-all-read");
             // console.log(data.success);
             if(data.success){
                 toast.success('All messages marked as seen', {

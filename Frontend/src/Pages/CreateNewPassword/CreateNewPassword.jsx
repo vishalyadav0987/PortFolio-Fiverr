@@ -2,7 +2,7 @@ import { FaLock, FaCheck, FaEye, FaEyeSlash,FaArrowLeft } from "react-icons/fa";
 import { useState } from "react";
 import './CreateNewPassword.css'
 import {useParams,useNavigate} from 'react-router-dom'
-import axios from 'axios'
+import axiosInstance from '../../axiosConfig';
 import toast from 'react-hot-toast'
 import Spinner from "../../Components/Spinner/Spinner";
 
@@ -25,8 +25,8 @@ const CreateNewPassword = () => {
       return;
     }
     try {
-      const response = await axios.post(
-        `/api/v1/user/reset-password/${token}`,
+      const response = await axiosInstance.post(
+        `/user/reset-password/${token}`,
         { password },
         { headers: { "Content-Type": "application/json" } }
       );

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Review.css';
 import { Rating } from '@mui/material';
 import { FaArrowAltCircleDown, FaLocationArrow } from 'react-icons/fa';
-import axios from 'axios';
+import axiosInstance from '../../axiosConfig';
 import toast from 'react-hot-toast';
 import { formatDistanceToNow } from 'date-fns'
 
@@ -14,7 +14,7 @@ const ReviewCard = ({overallRatingTheseGig, gigId, setShowGigReviewModal, showGi
     /*-----------Get all reviews of a gig-----------*/
     const getGigReviews = async () => {
         try {
-            const response = await axios.get(`/api/v1/gig/review/${gigId}`);
+            const response = await axiosInstance.get(`/gig/review/${gigId}`);
             if (response.data.success) {
                 setGigReview(response.data.reviews);
             }

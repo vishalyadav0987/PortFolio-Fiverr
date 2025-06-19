@@ -4,7 +4,7 @@ import "./Header.css";
 import { Link, useLocation } from "react-router-dom";
 import { FaCog, FaSignOutAlt, FaUser, FaHistory, FaLock } from "react-icons/fa";
 import { RiSecurePaymentLine } from "react-icons/ri";
-import axios from 'axios'
+import axiosInstance from '../../axiosConfig';
 import { useAuthContext } from '../../Context/AuthContext'
 import toast from 'react-hot-toast'
 import Spinner from "../Spinner/Spinner";
@@ -21,7 +21,7 @@ const Navbar = ({ isDropdownOpen, setDropdownOpen }) => {
   const handleLogout = async () => {
     setLoading(true)
     try {
-      const response = await axios.post('/api/v1/user/logout');
+      const response = await axiosInstance.post('/user/logout');
       if (response.data.success) {
         toast.success(response.data.message);
       } else {

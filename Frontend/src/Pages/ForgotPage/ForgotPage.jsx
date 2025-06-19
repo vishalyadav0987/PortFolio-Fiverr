@@ -1,7 +1,7 @@
 import { FaEnvelope, FaArrowLeft } from "react-icons/fa";
 import './ForgotPassword.css'
 import { useState } from "react";
-import axios from 'axios'
+import axiosInstance from '../../axiosConfig';
 import toast from 'react-hot-toast'
 import ResetPassword from "../ResetPassword/ResetPassword";
 import Spinner from "../../Components/Spinner/Spinner";
@@ -14,8 +14,8 @@ const ForgotPassword = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post(
-        '/api/v1/user/forget-password',
+      const response = await axiosInstance.post(
+        '/user/forget-password',
         { email },
         { headers: { "Content-Type": "application/json" } }
       );

@@ -164,7 +164,7 @@ const OrderCard = ({ order }) => {
         console.log(orderId,);
 
         try {
-            const response = await axios.post(`/api/v1/gig/review`, {
+            const response = await axios.post(`https://portfolio-fiverr.onrender.com/api/v1/gig/review`, {
                 orderId,
                 gigId: gigId[0]?.gigId,
                 rating,
@@ -227,7 +227,7 @@ const OrderCard = ({ order }) => {
             setIsProcessing(true);
 
             const { data: razorpayOrder } =
-                await axios.post("/api/v1/gig/order/payRemainingAmount", { orderId });
+                await axios.post("https://portfolio-fiverr.onrender.com/api/v1/gig/order/payRemainingAmount", { orderId });
 
             const options = {
                 key: "rzp_test_REPEeGSfqJEoFd",
@@ -239,7 +239,7 @@ const OrderCard = ({ order }) => {
                     // console.log(response);
 
                     try {
-                        await axios.post('/api/v1/gig/order/verifyRemainingPayment', {
+                        await axios.post('https://portfolio-fiverr.onrender.com/api/v1/gig/order/verifyRemainingPayment', {
                             orderId,
                             ...response,
                         });

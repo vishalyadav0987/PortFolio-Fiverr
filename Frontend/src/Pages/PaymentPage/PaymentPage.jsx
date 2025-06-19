@@ -144,7 +144,10 @@ const PaymentPage = () => {
                 paidAmount: payableAmount, // 🟢 Sending only the current payable amount
             };
     
-            const { data: razorpayOrder } = await axios.post("/api/v1/gig/order/place", dataForBackend);
+            const { data: razorpayOrder } = await axios.post("https://portfolio-fiverr.onrender.com/api/v1/gig/order/place", dataForBackend,{
+                withCredentials: true,
+                headers: { "Content-Type": "application/json" }
+            });
     
             const options = {
                 key: "rzp_test_REPEeGSfqJEoFd",

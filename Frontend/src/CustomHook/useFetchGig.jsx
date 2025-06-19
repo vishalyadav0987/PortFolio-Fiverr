@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import axios from "axios";
+import axiosInstance from '../axiosConfig';
 import { useGigContext } from "../Context/gigContext";
 
 const useFetchGigs = (id) => {
@@ -9,7 +9,7 @@ const useFetchGigs = (id) => {
         const fetchGigs = async () => {
             setLoading(true); // API कॉल से पहले लोडिंग स्टेट सेट करें
             try {
-                const response = await axios.get(`/api/v1/gig/get/${id}`);
+                const response = await axiosInstance.get(`/gig/get/${id}`);
                 setSingleGig(response.data.gig);
             } catch (err) {
                 TransformStream.error("Error fetching gigs")

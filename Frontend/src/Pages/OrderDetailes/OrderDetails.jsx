@@ -60,7 +60,7 @@ const OrderDetails = ({ setDropdownOpen }) => {
         revisionDescription: requestMessage,
         requestedAt: new Date(),
       };
-      const response = await axios.post('/api/v1/gig/order/revision-request', singleRequest);
+      const response = await axios.post('https://portfolio-fiverr.onrender.com/api/v1/gig/order/revision-request', singleRequest);
       if (response.data.success) {
         toast.success(response.data.message || 'Revision requested successfully.');
         setRevisionRequests(response.data.data);

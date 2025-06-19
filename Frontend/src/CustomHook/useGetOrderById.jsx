@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import axios from "axios";
+import axiosInstance from '../axiosConfig';
 import { useOrderContext } from "../Context/OrderContext";
 
 const useFetchOrderById = (orderId) => {
@@ -9,7 +9,7 @@ const useFetchOrderById = (orderId) => {
         const fetchOrderById = async () => {
             setLoading(true); // API कॉल से पहले लोडिंग स्टेट सेट करें
             try {
-                const response = await axios.get(`/api/v1/gig/order/${orderId}`);
+                const response = await axiosInstance.get(`/gig/order/${orderId}`);
                 setSingleOrder(response.data.order);
             } catch (err) {
                 TransformStream.error("Error fetching gigs")

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaGoogle, FaGithub, FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
 import './Auth.css';
 import PasswordStrengthMeter from '../../PasswordSrengthMeter/PasswordStrengthMeter';
-import axios from 'axios';
+import axiosInstance from '../../axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../Context/AuthContext'
 import toast from 'react-hot-toast';
@@ -39,9 +39,8 @@ const SignUp = () => {
       const { name, email, password } = formData;
       const dataToSend = { name, email, password, avatar: profileImage };
 
-      const { data } = await axios.post("https://portfolio-fiverr.onrender.com/api/v1/user/sign-up", dataToSend, {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true, // ✅ Ensures cookies are properly set
+      const { data } = await axiosInstance.post("/user/sign-up", dataToSend, {
+        headers: { "Content-Type": "application/json" }
       });
 
       if (data.success) {

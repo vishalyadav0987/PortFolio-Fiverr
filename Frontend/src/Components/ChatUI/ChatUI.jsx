@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './ChatUI.css';
 import { FaWindowClose, FaPlus } from "react-icons/fa";
 import toast from 'react-hot-toast';
-import axios from 'axios';
+import axiosInstance from '../../axiosConfig';
 import { useAuthContext } from '../../Context/AuthContext';
 import { useMessageContext } from '../../Context/MessageContext';
 import { format } from 'date-fns';
@@ -29,10 +29,10 @@ const ChatUI = ({ isChatOpen, setIsChatOpen, orderId, messageLoading, order }) =
         setLoading(true);
 
         try {
-            const response = await axios.post(
-                '/api/v1/communicate/send-message',
+            const response = await axiosInstance.post(
+                '/communicate/send-message',
                 { messageText: messageInput, orderId: orderId, senderId: authUser?._id },
-                { headers: { "Content-Type": "application/json" }, withCredentials: true }
+                { headers: { "Content-Type": "application/json" }}
             );
 
             if (response.data.success) {
