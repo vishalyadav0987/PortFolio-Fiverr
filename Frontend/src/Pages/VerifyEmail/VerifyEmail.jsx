@@ -42,7 +42,7 @@ export default function VerifyEmail() {
     const verificationCode = code.join("");
     try {
         const response = await axios.post(
-            '/api/v1/user/verify-email',
+            'https://portfolio-fiverr.onrender.com/api/v1/user/verify-email',
             { code: verificationCode },
             { headers: { "Content-Type": "application/json" } }
         );
