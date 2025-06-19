@@ -21,8 +21,8 @@ const Login = () => {
       const response = await axios.post(
         'https://portfolio-fiverr.onrender.com/api/v1/user/sign-in',
         { email:formData.email, password:formData.password},
-        { headers: { "Content-Type": "application/json" } },
-        { withCredentials: true } // ✅ Ensures cookies are properly set
+        { headers: { "Content-Type": "application/json" },withCredentials: true } // ✅ Ensures cookies are properly set,
+      
       );
       if (response.data.success) {
         setIsAuthenticate(true);
