@@ -159,7 +159,7 @@ const PaymentPage = () => {
                     // console.log(response);
                     
                     try {
-                        await axios.post('/api/v1/gig/order/verify', response);
+                        await axios.post('https://portfolio-fiverr.onrender.com/api/v1/gig/order/verify', response);
     
                         // 🟢 Store paid amount for Milestone Payments
                         if (paymentType === "Milestone") {
