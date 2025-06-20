@@ -35,7 +35,9 @@ const UpdateProjectForm = ({ onCancel }) => {
         const fetchProject = async () => {
             try {
                 setIsLoading(true);
-                const response = await axios.get(`/api/v1/client/get-project/${projectId}`);
+                const response = await axios.get(`https://portfolio-fiverr.onrender.com/api/v1/client/get-project/${projectId}`,{
+                    withCredentials: true,
+                });
                 if (response.data.success) {
                     setFormData(response.data.data);
                     setIsLoading(false);
@@ -91,8 +93,9 @@ const UpdateProjectForm = ({ onCancel }) => {
         setIsSubmitting(true);
 
         try {
-            const response = await axios.put(`/api/v1/client/update-project/${projectId}`,
+            const response = await axios.put(`https://portfolio-fiverr.onrender.com/api/v1/client/update-project/${projectId}`,
                 formData,
+                {withCredentials: true}
             )
             if (response.data.success) {
                 toast.success(response.data.message);

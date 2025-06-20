@@ -26,10 +26,10 @@ const OrderDetailsAdmin = () => {
     const handleStatusChange = async (newStatus) => {
         setStatus(newStatus)
         try {
-            const response = await axios.patch('/api/v1/gig/admin/update-status', {
+            const response = await axios.patch('https://portfolio-fiverr.onrender.com/api/v1/gig/admin/update-status', {
                 orderId,
                 orderStatus: newStatus
-            }, { headers: { 'Content-Type': 'application/json' } });
+            }, { headers: { 'Content-Type': 'application/json' },withCredentials: true });
 
             if (response.data.success) {
                 toast.success(response.data.message);

@@ -79,7 +79,7 @@ const GigSchema = new mongoose.Schema({
     numOfReviews: { type: Number, default: 0 },
     reviews: [
         {
-            userRevId: { type: mongoose.Schema.ObjectId, ref: "user", required: true },
+            userRevId: { type: mongoose.Schema.ObjectId, ref: "user" },
             orderId:{type: mongoose.Schema.ObjectId, ref: "order"},
             name: { type: String, required: true },
             avatar: { type: String },

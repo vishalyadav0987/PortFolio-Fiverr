@@ -17,7 +17,9 @@ const ProjectManagementTable = () => {
     const fetchProjects = async () => {
       try {
         // Simulate API call
-        const response = await axios.get('/api/v1/client/get-project')
+        const response = await axios.get('https://portfolio-fiverr.onrender.com/api/v1/client/get-project',{
+          withCredentials: true, // If you need to send cookies or authentication headers
+        })
         setTimeout(() => {
     
 
@@ -54,7 +56,9 @@ const ProjectManagementTable = () => {
   // Handle project deletion
   const handleDelete = async (projectId) => {
     try {
-      const response = await axios.delete(`/api/v1/client/delete-project/${projectId}`);
+      const response = await axios.delete(`https://portfolio-fiverr.onrender.com/api/v1/client/delete-project/${projectId}`,{
+        withCredentials: true, // If you need to send cookies or authentication headers
+      });
       if (response.data.success) {
         toast.success(response.data.message)
         setProjects(projects.filter(project => project._id !== projectId));

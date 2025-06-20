@@ -8,7 +8,9 @@ const useFetchAllUser = () => {
     const getGigAllUser = async () => {
         setLoading(true)
         try {
-          const response = await axios.get(`/api/v1/user/get-all-user`);
+          const response = await axios.get(`https://portfolio-fiverr.onrender.com/api/v1/user/get-all-user`,{
+            withCredentials: true, // If you need to send cookies or authentication headers
+          });
           if (response.data.success) {    
             setAllRegisteredUser(response.data.data);
           }

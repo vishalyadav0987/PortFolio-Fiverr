@@ -9,7 +9,9 @@ const useFetchAllGigs = () => {
         const fetchGigs = async () => {
             setLoading(true); // API कॉल से पहले लोडिंग स्टेट सेट करें
             try {
-                const response = await axios.get("/api/v1/gig/get");
+                const response = await axios.get("https://portfolio-fiverr.onrender.com/api/v1/gig/get",{
+                    withCredentials: true, // अगर आपको क्रॉस-ओरिजिन क्रेडेंशियल्स की जरूरत है
+                });
                 setAllGigs(response.data.gigs);
             } catch (err) {
                 TransformStream.error("Error fetching gigs")

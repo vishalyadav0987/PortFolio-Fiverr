@@ -55,7 +55,9 @@ const GigCard = ({ gig, setAllGigs }) => {
     const deleteGigHandler = async (gigId) => {
         setDelLoading(true);
         try {
-            const response = await axios.delete(`/api/v1/gig/delete/${gigId}`);
+            const response = await axios.delete(`https://portfolio-fiverr.onrender.com/api/v1/gig/delete/${gigId}`,{
+                withCredentials: true, // If you need to send cookies or authentication headers
+            });
             if (response.data.success) {
                 toast.success(response.data.message);
                 setAllGigs((prev) => {

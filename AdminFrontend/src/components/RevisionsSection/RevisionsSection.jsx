@@ -23,10 +23,12 @@ const RevisionsSection = ({ orderId, revisions, maxRevisions, usedRevisions }) =
     );
 
     try {
-      const response = await axios.patch('/api/v1/gig/admin/update-revision-status', {
+      const response = await axios.patch('https://portfolio-fiverr.onrender.com/api/v1/gig/admin/update-revision-status', {
         orderId,
         revisionId,
         revisionStatus: newStatus
+      },{
+        withCredentials: true,
       });
 
       if (response.data.success) {

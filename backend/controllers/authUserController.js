@@ -155,8 +155,8 @@ const loginUser = async (req, res) => {
 
         const token = generateAndSetToken(user._id, res);
         console.log(token);
-        
-        
+
+
 
         res.status(200).json({
             success: true,
@@ -190,7 +190,12 @@ const logoutUser = async (req, res) => {
                 message: "You are not logged in.",
             })
         }
-        res.clearCookie("token");
+        res.clearCookie("token", {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+            path: "/"
+        });
         res.json({
             success: true,
             message: "User Successfully logged out."

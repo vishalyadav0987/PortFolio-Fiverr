@@ -50,7 +50,7 @@ const ChatPage = ({ splashImage }) => {
 
     try {
       const response = await axios.post(
-        '/api/v1/communicate/send-message',
+        'https://portfolio-fiverr.onrender.com/api/v1/communicate/send-message',
         {
           messageText: messageInput,
           orderId: selectedConversation?.orderId?._id,

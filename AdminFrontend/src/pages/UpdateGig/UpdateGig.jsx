@@ -39,7 +39,9 @@ const UpdateGig = () => {
     useEffect(() => {
         const fetchGig = async () => {
             try {
-                const { data } = await axios.get(`/api/v1/gig/get/${id}`);
+                const { data } = await axios.get(`https://portfolio-fiverr.onrender.com/api/v1/gig/get/${id}`,{
+                    withCredentials: true, // If you need to send cookies or authentication headers
+                });
                 setGig(data.gig.gig);
                 setFormData({
                     title: data.gig.title,
@@ -110,7 +112,12 @@ const UpdateGig = () => {
         e.preventDefault();
         setUpLoading(true)
         try {
-            const response = await axios.put(`/api/v1/gig/update/${id}`, formData);
+            const response = await axios.put(`https://portfolio-fiverr.onrender.com/api/v1/gig/update/${id}`, formData,{
+                withCredentials: true, // If you need to send cookies or authentication headers
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
             if (response.data.success) {
                 toast.success(response.data.message);
                 navigate('/all-gig')

@@ -66,12 +66,14 @@ const AddProjectForm = () => {
     e.preventDefault();
     console.log('Form submitted:', formData);
     try {
-      const response = await axios.post('/api/v1/client/add-project', 
+      const response = await axios.post('https://portfolio-fiverr.onrender.com/api/v1/client/add-project', 
         formData
       , {
         headers: {
           'Content-Type': 'application/json'
-        }
+        },
+        withCredentials: true // If you need to send cookies or authentication headers
+        
       });
       if(response.data.success){
         toast.success(response.data.message);

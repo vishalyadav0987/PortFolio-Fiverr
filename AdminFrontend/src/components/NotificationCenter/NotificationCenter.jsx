@@ -83,7 +83,9 @@ const NotificationCenter = () => {
     useEffect(() => {
         const fetchNotifications = async () => {
             try {
-                const { data } = await axios.get("/api/v1/notify/admin-notifications");
+                const { data } = await axios.get("https://portfolio-fiverr.onrender.com/api/v1/notify/admin-notifications",{
+                    withCredentials: true
+                });
                 setNotifications(data.notifications);
                 setUnreadCount(data.notifications.filter(n => !n.isRead).length);
             } catch (error) {

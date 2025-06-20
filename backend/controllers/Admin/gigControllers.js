@@ -135,7 +135,7 @@ const createGig = async (req, res) => {
         });
     } catch (error) {
         console.error("Something went wrong in createGig function:", error);
-        return res.status(500).json({ success: false, message: "Something went wrong in createGig!" });
+        return res.status(500).json({ success: false, message: "Something went wrong in createGig!" + error.message });
     }
 };
 

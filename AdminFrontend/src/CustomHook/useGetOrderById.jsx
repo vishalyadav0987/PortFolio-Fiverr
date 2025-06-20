@@ -12,7 +12,9 @@ const useFetchOrderById = (orderId) => {
         const fetchOrderById = async () => {
             setLoading(true); // API कॉल से पहले लोडिंग स्टेट सेट करें
             try {
-                const response = await axios.get(`/api/v1/gig/admin-orders/${orderId}`);
+                const response = await axios.get(`https://portfolio-fiverr.onrender.com/api/v1/gig/admin-orders/${orderId}`,{
+                    withCredentials: true, // अगर आपको क्रॉस-ओरिजिन क्रेडेंशियल्स की जरूरत है
+                });
                 setSingleOrder(response.data.order);
                 setStatus(response.data.order.orderStatus)
             } catch (err) {

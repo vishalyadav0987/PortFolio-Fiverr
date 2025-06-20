@@ -16,7 +16,9 @@ const useFetchAllOrder = () => {
     const getAllOrders = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('/api/v1/gig/admin-orders');
+            const response = await axios.get('https://portfolio-fiverr.onrender.com/api/v1/gig/admin-orders',{
+                withCredentials: true, // If you need to send cookies or authentication headers
+            });
             
             if (response.data.success) {
                 const orders = response.data.orders;

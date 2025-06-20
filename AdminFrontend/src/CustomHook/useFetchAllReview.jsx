@@ -7,7 +7,9 @@ const useFetchAllReview = () => {
 
     const getGigAllReviews = async () => {
         try {
-          const response = await axios.get(`/api/v1/gig/reviews`);
+          const response = await axios.get(`https://portfolio-fiverr.onrender.com/api/v1/gig/reviews`,{
+            withCredentials: true, // If you need to send cookies or authentication headers
+          });
           if (response.data.success) {    
             setAllReviews(response.data.reviews);
           }

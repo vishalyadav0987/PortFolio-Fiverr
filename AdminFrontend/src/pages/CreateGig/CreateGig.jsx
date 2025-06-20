@@ -184,8 +184,9 @@ const CreateGig = () => {
 
 
         try {
-            const response = await axios.post("/api/v1/gig/create", formData, {
+            const response = await axios.post("https://portfolio-fiverr.onrender.com/api/v1/gig/create", formData, {
                 headers: { "Content-Type": "multipart/form-data" },
+                withCredentials: true, // If you need to send cookies or authentication headers
             });
 
             if (response.data.success) {
