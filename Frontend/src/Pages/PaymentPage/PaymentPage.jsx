@@ -6,12 +6,14 @@ import { FaList, FaUser } from 'react-icons/fa6';
 import { FaMoneyCheckAlt, FaProjectDiagram } from 'react-icons/fa';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Spinner from '../../Components/Spinner/Spinner';
 
 const PaymentPage = () => {
     const navigate = useNavigate();
     const [scriptLoaded, setScriptLoaded] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
     const [showFeatures, setShowFeatures] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const [step, setStep] = useState(1);
     const [data, setData] = useState({
@@ -104,16 +106,18 @@ const PaymentPage = () => {
     }, []);
 
     const handlePayment = async (e) => {
+
         e.preventDefault();
         if (!data.firstName || !data.lastName || !data.country || !data.city || !data.state || !data.phone || !data.email || !data.street) {
             toast.error("Please fill all the details");
             return;
         }
+        setLoading(true);
         if (!scriptLoaded) return toast.error('Payment gateway is loading...');
-    
+
         try {
             setIsProcessing(true);
-    
+
             // 🟢 Milestone logic: Check if half payment is done
             let payableAmount = total;
             let isFirstMilestone = false;
@@ -126,7 +130,7 @@ const PaymentPage = () => {
                     payableAmount = total - paidAmount; // Remaining half
                 }
             }
-    
+
             const dataForBackend = {
                 buyerId: parseData?.buyerId,
                 deliveryDate: parseData?.deliveryDate,
@@ -143,12 +147,12 @@ const PaymentPage = () => {
                 totalAmount: total,
                 paidAmount: payableAmount, // 🟢 Sending only the current payable amount
             };
-    
-            const { data: razorpayOrder } = await axios.post("https://portfolio-fiverr.onrender.com/api/v1/gig/order/place", dataForBackend,{
+
+            const { data: razorpayOrder } = await axios.post("https://portfolio-fiverr.onrender.com/api/v1/gig/order/place", dataForBackend, {
                 withCredentials: true,
                 headers: { "Content-Type": "application/json" }
             });
-    
+
             const options = {
                 key: "rzp_test_REPEeGSfqJEoFd",
                 amount: (payableAmount * 100).toString(), // 🟢 Convert to paise
@@ -157,13 +161,13 @@ const PaymentPage = () => {
                 order_id: razorpayOrder.orderId,
                 handler: async (response) => {
                     // console.log(response);
-                    
+
                     try {
-                        await axios.post('https://portfolio-fiverr.onrender.com/api/v1/gig/order/verify', response,{
+                        await axios.post('https://portfolio-fiverr.onrender.com/api/v1/gig/order/verify', response, {
                             withCredentials: true,
                             headers: { "Content-Type": "application/json" }
                         });
-    
+
                         // 🟢 Store paid amount for Milestone Payments
                         if (paymentType === "Milestone") {
                             let newPaidAmount = payableAmount;
@@ -172,7 +176,7 @@ const PaymentPage = () => {
                             }
                             localStorage.setItem("paidAmount", JSON.stringify(newPaidAmount));
                         }
-    
+
                         toast.success("Payment Successful!");
                         if (paymentType !== "Milestone" || !isFirstMilestone) {
                             localStorage.removeItem("orderItemsData");
@@ -194,15 +198,16 @@ const PaymentPage = () => {
                 theme: { color: "#0d9488" },
                 modal: { ondismiss: () => toast.error("Payment cancelled") }
             };
-    
+
             new window.Razorpay(options).open();
         } catch (error) {
             toast.error(error.response?.data?.message || "Payment Failed");
         } finally {
             setIsProcessing(false);
+            setLoading(false);
         }
     };
-    
+
 
     /*------------Hnadle Payment using razorpay--------------*/
     const gst = ((+total / 100) * 18).toFixed(0);
@@ -445,8 +450,14 @@ const PaymentPage = () => {
                         </div>
 
                         <button className="payment-payment-button" type='submit' onClick={handlePayment}>
-                            Proceed to Payment (₹{paymentType === "Milestone" ? total / 2 : total})
-                            <span className="payment-button-icon">→</span>
+                            {
+                                loading ? (<Spinner />) : (
+                                    <>
+                                        Proceed to Payment (₹{paymentType === "Milestone" ? total / 2 : total})
+                                        <span className="payment-button-icon">→</span>
+                                    </>
+                                )
+                            }
                         </button>
 
                         {/* Accepted Payments */}

@@ -31,6 +31,7 @@ const OrderDetails = ({ setDropdownOpen }) => {
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [showRevisionModal, setShowRevisionModal] = useState(false);
   const [requestMessage, setRequestMessage] = useState('');
+  const [loadingRev, setLoadingRev] = useState(false);
 
   // Fetch order data (replace with actual API call)
   const order = singleOrder && singleOrder;
@@ -53,6 +54,7 @@ const OrderDetails = ({ setDropdownOpen }) => {
 
 
   const handleRevisionRequest = async () => {
+    setLoadingRev(true);
     try {
       const singleRequest = {
         orderId: id,
@@ -60,13 +62,15 @@ const OrderDetails = ({ setDropdownOpen }) => {
         revisionDescription: requestMessage,
         requestedAt: new Date(),
       };
-      const response = await axios.post('https://portfolio-fiverr.onrender.com/api/v1/gig/order/revision-request', singleRequest);
+      const response = await axios.post('https://portfolio-fiverr.onrender.com/api/v1/gig/order/revision-request', singleRequest, {
+        withCredentials: true
+      });
       if (response.data.success) {
         toast.success(response.data.message || 'Revision requested successfully.');
         setRevisionRequests(response.data.data);
         // 🆕 Increment Used Revisions Count
         setUsedRevisions(prev => prev + 1);
-       
+
       }
     } catch (error) {
       console.error('Error requesting revision:', error);
@@ -75,6 +79,7 @@ const OrderDetails = ({ setDropdownOpen }) => {
     } finally {
       setShowRevisionModal(false);
       setRequestMessage('');
+      setLoadingRev(false);
     }
 
   };
@@ -88,7 +93,7 @@ const OrderDetails = ({ setDropdownOpen }) => {
         const response = await axios.get(`/api/v1/gig/order/revision/${id}`);
         if (response.data.success) {
           console.log('Revisions:', response.data.data);
-          
+
           setRevisionRequests(response.data.data);
         }
       } catch (error) {
@@ -100,10 +105,10 @@ const OrderDetails = ({ setDropdownOpen }) => {
   }, [id]);
   /*----------FETCHING REVISION BASED ON ORDER ID-----------------*/
 
- useEffect(()=>{
-  console.log(requestMessage);
-  
- },[requestMessage])
+  useEffect(() => {
+    console.log(requestMessage);
+
+  }, [requestMessage])
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -134,7 +139,13 @@ const OrderDetails = ({ setDropdownOpen }) => {
             {order?.paymentInfo?.paymentStatus}
           </span>
           <button className="message-button-1" onClick={() => setShowRevisionModal(true)}>
-            <FaEnvelope /> Request Revision
+            {
+              loadingRev ? (<Spinner />) : (
+                <>
+                  <FaEnvelope /> Request Revision
+                </>
+              )
+            }
           </button>
         </div>
       </div>
@@ -265,9 +276,9 @@ const OrderDetails = ({ setDropdownOpen }) => {
             </div>
           ))} */}
 
-          <RevisionRequests 
-          revisionRequests={revisionRequests}
-          usedRevision = {order?.usedRevisions}
+          <RevisionRequests
+            revisionRequests={revisionRequests}
+            usedRevision={order?.usedRevisions}
           />
         </div>
       </div>
