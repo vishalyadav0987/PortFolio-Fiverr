@@ -10,26 +10,6 @@ const { io, onlineUsers } = require('../../socket/Socket')
 ------------------------------------------*/
 const createGig = async (req, res) => {
     try {
-        // console.log("Request Body:", JSON.stringify(req.body, null, 2));
-
-        // // Parse MyPortfolio if it's a string
-        // if (typeof req.body.MyPortfolio === "string") {
-        //     req.body.MyPortfolio = JSON.parse(req.body.MyPortfolio);
-        // }
-
-        // if (typeof req.body.PricingPlans === "string") {
-        //     req.body.PricingPlans = JSON.parse(req.body.PricingPlans);
-        // }
-        // if (typeof req.body.FAQ === "string") {
-        //     req.body.FAQ = JSON.parse(req.body.FAQ);
-        // }
-        // if (typeof req.body.extraFeatures === "string") {
-        //     req.body.extraFeatures = JSON.parse(req.body.extraFeatures);
-        // }
-
-        console.log(req.body?.MyPortfolio.projectTitle);
-
-
         const safeParse = (data) => {
             try {
                 return typeof data === "string" ? JSON.parse(data) : data;
@@ -43,7 +23,6 @@ const createGig = async (req, res) => {
         req.body.FAQ = safeParse(req.body.FAQ);
         req.body.extraFeatures = safeParse(req.body.extraFeatures);
 
-
         // Handle thumbnail images
         let images = [];
         if (typeof req.body.thumbnailImages === "string") {
@@ -54,8 +33,22 @@ const createGig = async (req, res) => {
 
         const imagesLinks = await Promise.all(
             images.map(async (img) => {
-                const result = await cloudinary.uploader.upload(img, { folder: "products" });
-                return { public_id: result.public_id, url: result.secure_url };
+                // Check if the image is a valid base64 string
+                if (!img || typeof img !== 'string' || !img.startsWith('data:image')) {
+                    throw new Error('Invalid image format');
+                }
+
+                // Upload image to Cloudinary
+                try {
+                    const result = await cloudinary.uploader.upload(img, {
+                        folder: "products",
+                        resource_type: "auto"
+                    });
+                    return { public_id: result.public_id, url: result.secure_url };
+                } catch (error) {
+                    console.error("Cloudinary upload error:", error);
+                    throw new Error(`Image upload failed: ${error.message}`);
+                }
             })
         );
 
@@ -75,8 +68,21 @@ const createGig = async (req, res) => {
 
                     const projectImageLinks = await Promise.all(
                         projectImages.map(async (img) => {
-                            const result = await cloudinary.uploader.upload(img, { folder: "portfolio" });
-                            return { public_id: result.public_id, url: result.secure_url };
+                            // Check if the image is a valid base64 string
+                            if (!img || typeof img !== 'string' || !img.startsWith('data:image')) {
+                                throw new Error('Invalid project image format');
+                            }
+
+                            try {
+                                const result = await cloudinary.uploader.upload(img, {
+                                    folder: "portfolio",
+                                    resource_type: "auto"
+                                });
+                                return { public_id: result.public_id, url: result.secure_url };
+                            } catch (error) {
+                                console.error("Cloudinary upload error:", error);
+                                throw new Error(`Project image upload failed: ${error.message}`);
+                            }
                         })
                     );
 
@@ -135,7 +141,12 @@ const createGig = async (req, res) => {
         });
     } catch (error) {
         console.error("Something went wrong in createGig function:", error);
-        return res.status(500).json({ success: false, message: "Something went wrong in createGig!" + error.message });
+        return res.status(500).json({ 
+            success: false, 
+            message: "Something went wrong in createGig!",
+            error: error.message,
+            details: error.stack 
+        });
     }
 };
 

@@ -154,40 +154,34 @@ const CreateGig = () => {
         e.preventDefault();
         setLoading(true);
 
-        const formData = new FormData();
-        formData.append("title", title || "");
-        formData.append("description", content || "");
-
-        // Ensure images array exists
-        if (Array.isArray(images)) {
-            images.forEach((image) => formData.append("thumbnailImages", image));
-        } else {
-            console.warn("images is undefined or not an array");
-        }
-
-        // Append about me details safely
-        formData.append("from", formDataA?.from || "");
-        formData.append("since", formDataA?.since || "");
-        formData.append("AvgResponseT", formDataA?.AvgResponseT || "");
-        formData.append("Languages", formDataA.Languages.split(","));
-        formData.append("AboutMe", formDataA?.AboutMe || "");
-
-        formData.append(`MyPortfolio`, projects);
-        formData.append(`PricingPlans`, JSON.stringify(pricingPlans));
-        formData.append(`FAQ`, JSON.stringify(faqs));
-        formData.append(`extraFeatures`, JSON.stringify(extraFeatures));
-
-        // Append project details safely
-        formData.append("websiteType", projectDetails.websiteType);
-        formData.append("techStack", projectDetails?.techStack.split(","));
-        formData.append("functionality", projectDetails?.functionality.split(","));
-
-
         try {
-            const response = await axios.post("https://portfolio-fiverr.onrender.com/api/v1/gig/create", formData, {
-                headers: { "Content-Type": "multipart/form-data" },
-                withCredentials: true, // If you need to send cookies or authentication headers
-            });
+            // Prepare the payload
+            const payload = {
+                title,
+                description: content,
+                thumbnailImages: images, // These should already be base64 strings
+                from: formDataA?.from || "",
+                since: formDataA?.since || "",
+                AvgResponseT: formDataA?.AvgResponseT || "",
+                Languages: formDataA.Languages ? formDataA.Languages.split(",") : [],
+                AboutMe: formDataA?.AboutMe || "",
+                MyPortfolio: projects,
+                PricingPlans: pricingPlans,
+                FAQ: faqs,
+                extraFeatures: extraFeatures,
+                websiteType: projectDetails.websiteType,
+                techStack: projectDetails?.techStack ? projectDetails.techStack.split(",") : [],
+                functionality: projectDetails?.functionality ? projectDetails.functionality.split(",") : []
+            };
+
+            const response = await axios.post(
+                "https://portfolio-fiverr.onrender.com/api/v1/gig/create", 
+                payload,
+                {
+                    headers: { "Content-Type": "application/json" },
+                    withCredentials: true,
+                }
+            );
 
             if (response.data.success) {
                 toast.success(response.data.message);
@@ -205,7 +199,7 @@ const CreateGig = () => {
             }
 
         } catch (error) {
-            setLoading(false)
+            setLoading(false);
             console.error("Error creating gig:", error);
             toast.error(error.response?.data?.message || "Something went wrong. Please try again.");
         }
