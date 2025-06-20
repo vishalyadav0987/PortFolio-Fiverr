@@ -18,13 +18,13 @@ const SignUp = () => {
   });
 
   const navigate = useNavigate();
-  const { setAuthUser, loading, setLoading, setIsAuthenticate } = useAuthContext()
+  const { setAuthUser, setIsAuthenticate } = useAuthContext()
 
   const [avatar, setAvatar] = useState(null);
   const [profileImage, setProfileImage] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
 
 
-
+  const [signLoading,setSignLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -33,7 +33,7 @@ const SignUp = () => {
       return;
     }
 
-    setLoading(true);
+    setSignLoading(true);
 
     try {
       const { name, email, password } = formData;
@@ -63,7 +63,7 @@ const SignUp = () => {
         toast.error(errorMessage);
       }
     } finally {
-      setLoading(false);
+      setSignLoading(false);
     }
   };
 
@@ -123,17 +123,39 @@ const SignUp = () => {
             />
           </div>
 
-          <button type="submit" className="auth-button" style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-          }}>
+          <button
+            type="submit"
+            className="auth-button"
+            disabled={signLoading}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "10px 20px",
+              borderRadius: "6px",
+              fontWeight: "600",
+              fontSize: "16px",
+              color: "#fff",
+              cursor: signLoading ? "not-allowed" : "pointer",
+              opacity: signLoading ? 0.8 : 1
+            }}
+          >
             {
-              loading ? (
-                <Spinner />
-              ) : ("Create Account")
+              signLoading ? (
+                <>
+                <Spinner/>
+                <span className="dots-loader"
+                style={{
+                  marginLeft:"15px"
+                }}
+                >Creating<span>.</span><span>.</span><span>.</span></span>
+                </>
+              ) : (
+                "Create Account"
+              )
             }
           </button>
+
         </form>
 
         <div className="social-auth">

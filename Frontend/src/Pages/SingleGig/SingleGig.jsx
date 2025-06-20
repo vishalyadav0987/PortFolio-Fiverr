@@ -28,7 +28,8 @@ const SingleGig = ({ setDropdownOpen }) => {
     const plans = singleGig?.PricingPlans || [];
     const [selectedPlan, setSelectedPlan] = useState(plans.length > 0 ? plans[0] : null);
     const { authUser } = useAuthContext();
-    
+    const [revLoading,setRevLoading] = useState(false)
+
 
 
 
@@ -143,20 +144,22 @@ const SingleGig = ({ setDropdownOpen }) => {
     const [comment, setComment] = useState('');
     const addRatingHandle = async (e) => {
         e.preventDefault();
+        setRevLoading(true);
         try {
             const response = await axiosInstance.post(`/gig/review`, {
                 gigId,
                 rating,
                 comment
             }, { headers: { 'Content-Type': 'application/json' } });
-            if(response.data.success){
+            if (response.data.success) {
                 toast.success(response.data.message);
                 setShowGigReviewModal(!showGigReviewModal);
             }
         } catch (error) {
             toast.error(error.response.data.message);
             console.log("Erron in addRatingHandle", error);
-        }finally{
+        } finally {
+            setRevLoading(false);
             setComment('');
             setRating(0);
             setShowGigReviewModal(!showGigReviewModal);
@@ -343,8 +346,8 @@ const SingleGig = ({ setDropdownOpen }) => {
                         <div className="review-container-">
                             <h2>Review</h2>
                             <ReviewCard
-                            overallRatingTheseGig={singleGig?.ratings}
-                            gigId={gigId}
+                                overallRatingTheseGig={singleGig?.ratings}
+                                gigId={gigId}
                                 setShowGigReviewModal={setShowGigReviewModal}
                                 showGigReviewModal={showGigReviewModal}
                             />
@@ -382,18 +385,33 @@ const SingleGig = ({ setDropdownOpen }) => {
                                         </div>
                                         <textarea
                                             style={{ marginTop: "8px" }}
-                                              value={comment}
-                                              onChange={(e) => setComment(e.target.value)}
+                                            value={comment}
+                                            onChange={(e) => setComment(e.target.value)}
                                             placeholder="Write your review here...."
                                         />
                                         <div className="modal-actions-1">
                                             <button
                                                 onClick={() => setShowGigReviewModal(false)}>Cancel</button>
                                             <button
-                                            onClick={addRatingHandle}
+                                                onClick={addRatingHandle}
+                                                disabled={revLoading || !rating || !comment}
+                                                style={{
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    justifyContent: "center",
+                                                    gap: "8px"
+                                                }}
                                             >
-                                                Submit Review
+                                                {revLoading ? (
+                                                    <>
+                                                        <Spinner />
+                                                        <span style={{ fontSize: "14px", fontWeight: "500" }}>Submitting...</span>
+                                                    </>
+                                                ) : (
+                                                    <span style={{ fontSize: "14px", fontWeight: "500" }}>Submit Review</span>
+                                                )}
                                             </button>
+
                                         </div>
                                     </div>
                                 </div>

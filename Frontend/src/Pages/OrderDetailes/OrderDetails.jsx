@@ -139,13 +139,9 @@ const OrderDetails = ({ setDropdownOpen }) => {
             {order?.paymentInfo?.paymentStatus}
           </span>
           <button className="message-button-1" onClick={() => setShowRevisionModal(true)}>
-            {
-              loadingRev ? (<Spinner />) : (
-                <>
-                  <FaEnvelope /> Request Revision
-                </>
-              )
-            }
+
+            <FaEnvelope /> Request Revision
+
           </button>
         </div>
       </div>
@@ -314,12 +310,30 @@ const OrderDetails = ({ setDropdownOpen }) => {
               <button onClick={() => setShowRevisionModal(false)}>Cancel</button>
               <button
                 onClick={handleRevisionRequest}
-                disabled={order?.usedRevisions >= order?.maxRevisions}
+                disabled={loadingRev || order?.usedRevisions >= order?.maxRevisions}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                  fontSize: "14px",
+                  fontWeight: "500",
+                  opacity: loadingRev || order?.usedRevisions >= order?.maxRevisions ? 0.6 : 1,
+                  cursor: loadingRev || order?.usedRevisions >= order?.maxRevisions ? "not-allowed" : "pointer"
+                }}
               >
-                {order?.usedRevisions < order?.maxRevisions
-                  ? 'Submit Revision'
-                  : 'No Revisions Left'}
+                {loadingRev ? (
+                  <>
+                    <Spinner />
+                    <span>Submitting...</span>
+                  </>
+                ) : (
+                  order?.usedRevisions < order?.maxRevisions
+                    ? 'Submit Revision'
+                    : 'No Revisions Left'
+                )}
               </button>
+
             </div>
           </div>
         </div>

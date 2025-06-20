@@ -29,6 +29,7 @@ const OrderList = ({ setDropdownOpen }) => {
         'Accepted': '#3b82f6',
         'Delivered': '#10b981'
     };
+     
 
 
 
@@ -156,12 +157,13 @@ const OrderCard = ({ order }) => {
         'Partially Paid': '#3b82f6',
         'Paid': '#10b981'
     };
+    const [revLoading,setRevLoading] = useState(false)
 
     /*------------- REIEW LOGIC BASED ON ID AND GIGID ---------------*/
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState('')
     const addRatingHandle = async (orderId, gigId) => {
-        console.log(orderId,);
+        setRevLoading(true)
 
         try {
             const response = await axios.post(`https://portfolio-fiverr.onrender.com/api/v1/gig/review`, {
@@ -179,6 +181,7 @@ const OrderCard = ({ order }) => {
             toast.error(error.response?.data?.message || "Something went wrong");
             console.log("Error in addRatingHandle:", error);
         } finally {
+            setRevLoading(false)
             setComment('');
             setRating(0);
             setShowReviewModal(!showReviewModal);
@@ -227,7 +230,7 @@ const OrderCard = ({ order }) => {
             setIsProcessing(true);
 
             const { data: razorpayOrder } =
-                await axios.post("https://portfolio-fiverr.onrender.com/api/v1/gig/order/payRemainingAmount", { orderId },{
+                await axios.post("https://portfolio-fiverr.onrender.com/api/v1/gig/order/payRemainingAmount", { orderId }, {
                     withCredentials: true,
                 });
 
@@ -244,7 +247,7 @@ const OrderCard = ({ order }) => {
                         await axios.post('https://portfolio-fiverr.onrender.com/api/v1/gig/order/verifyRemainingPayment', {
                             orderId,
                             ...response,
-                        },{
+                        }, {
                             withCredentials: true,
                         });
 
@@ -282,15 +285,15 @@ const OrderCard = ({ order }) => {
 
     /*------------- Communicate with Admin ---------------*/
     const [isChatOpen, setIsChatOpen] = useState(false);
-    const {conversation,setConversation,messages,setMessages} = useMessageContext()
-    const [messageLoading,setMessageLoading] =useState(false)
-    
+    const { conversation, setConversation, messages, setMessages } = useMessageContext()
+    const [messageLoading, setMessageLoading] = useState(false)
+
     const handleOpenChat = async (orderId) => {
         setIsChatOpen(true);
         setMessageLoading(true);
         const data = await fetchConversationByOrderId(orderId);
         console.log(data);
-        
+
         if (data.success) {
             setConversation(data.conversation);
             setMessages(data.messages);
@@ -500,23 +503,42 @@ const OrderCard = ({ order }) => {
 
                                     addRatingHandle(order?._id, orderItems);
                                 }}
+                                disabled={revLoading}
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    gap: "8px",
+                                    opacity: revLoading ? 0.6 : 1,
+                                    cursor: revLoading ? "not-allowed" : "pointer"
+                                }}
                             >
-                                Submit Review
+                                {
+                                    revLoading ? (
+                                        <>
+                                            <Spinner />
+                                            <span style={{ fontSize: "14px", fontWeight: "500" }}>Submitting...</span>
+                                        </>
+                                    ) : (
+                                        <span style={{ fontSize: "14px", fontWeight: "500" }}>Submit Review</span>
+                                    )
+                                }
                             </button>
-                           
+
+
                         </div>
                     </div>
                 </div>
             )}
-             
-                <ChatUI 
-                isChatOpen={isChatOpen} 
-                setIsChatOpen={setIsChatOpen} 
+
+            <ChatUI
+                isChatOpen={isChatOpen}
+                setIsChatOpen={setIsChatOpen}
                 orderId={order?._id}
                 order={order}
                 messageLoading={messageLoading}
-                />
-             
+            />
+
         </div>
     );
 };

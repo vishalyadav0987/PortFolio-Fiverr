@@ -13,7 +13,7 @@ const PaymentPage = () => {
     const [scriptLoaded, setScriptLoaded] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
     const [showFeatures, setShowFeatures] = useState(false);
-    const [loading, setLoading] = useState(true);
+    const [loadingPay, setLoadingPay] = useState(false);
 
     const [step, setStep] = useState(1);
     const [data, setData] = useState({
@@ -112,7 +112,7 @@ const PaymentPage = () => {
             toast.error("Please fill all the details");
             return;
         }
-        setLoading(true);
+        setLoadingPay(true);
         if (!scriptLoaded) return toast.error('Payment gateway is loading...');
 
         try {
@@ -204,7 +204,7 @@ const PaymentPage = () => {
             toast.error(error.response?.data?.message || "Payment Failed");
         } finally {
             setIsProcessing(false);
-            setLoading(false);
+            setLoadingPay(false);
         }
     };
 
@@ -449,16 +449,43 @@ const PaymentPage = () => {
                             </div>
                         </div>
 
-                        <button className="payment-payment-button" type='submit' onClick={handlePayment}>
+                        <button
+                            className="payment-payment-button"
+                            type="submit"
+                            disabled={loadingPay}
+                            onClick={handlePayment}
+                            style={{
+                                opacity: loadingPay ? 0.6 : 1,
+                                cursor: loadingPay ? "not-allowed" : "pointer"
+                            }}
+                        >
                             {
-                                loading ? (<Spinner />) : (
-                                    <>
-                                        Proceed to Payment (₹{paymentType === "Milestone" ? total / 2 : total})
+                                loadingPay ? (
+                                    <div style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        gap: "8px"
+                                    }}>
+                                        <Spinner />
+                                        <span style={{ fontSize: "14px", fontWeight: "500" }}>Processing...</span>
+                                    </div>
+                                ) : (
+                                    <div style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        gap: "6px"
+                                    }}>
+                                        <span style={{ fontSize: "15px", fontWeight: "500" }}>
+                                            Proceed to Payment (₹{paymentType === "Milestone" ? total / 2 : total})
+                                        </span>
                                         <span className="payment-button-icon">→</span>
-                                    </>
+                                    </div>
                                 )
                             }
                         </button>
+
 
                         {/* Accepted Payments */}
                         <div className="payment-accepted-payments">

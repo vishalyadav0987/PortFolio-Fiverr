@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import Spinner from '../../Components/Spinner/Spinner';
 
 const Login = () => {
-  const {  setAuthUser, setIsAuthenticate } = useAuthContext();
+  const { setAuthUser, setIsAuthenticate } = useAuthContext();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -16,14 +16,14 @@ const Login = () => {
 
   const [loadingLog, setLoadingLog] = useState(false);
 
-  const handleLoginSubmit = async(e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
     setLoadingLog(true);
     try {
       const response = await axiosInstance.post(
         '/user/sign-in',
-        { email:formData.email, password:formData.password},
-        { headers: { "Content-Type": "application/json" }}
+        { email: formData.email, password: formData.password },
+        { headers: { "Content-Type": "application/json" } }
       );
       if (response.data.success) {
         setIsAuthenticate(true);
@@ -43,7 +43,7 @@ const Login = () => {
       setLoadingLog(false);
     }
   }
-  
+
 
   return (
     <div className="auth-container">
@@ -84,12 +84,23 @@ const Login = () => {
           <button type="submit" className="auth-button" style={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "center"
-          }}>
+            justifyContent: "center",
+            opacity: loadingLog ? 0.7 : 1,
+            cursor: loadingLog ? "not-allowed" : "pointer"
+          }}
+            disabled={loadingLog}
+          >
             {
               loadingLog ? (
-                <Spinner />
-              ) : ("Login")
+                <>
+                  <Spinner />
+                  <span style={{
+                  marginLeft:"15px"
+                }} className="loading-text">Logging in...</span>
+                </>
+              ) : (
+                "Login"
+              )
             }
           </button>
         </form>
