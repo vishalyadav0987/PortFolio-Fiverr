@@ -169,7 +169,7 @@ const OrderCard = ({ order }) => {
                 gigId: gigId[0]?.gigId,
                 rating,
                 comment
-            }, { headers: { 'Content-Type': 'application/json' } });
+            }, { headers: { 'Content-Type': 'application/json' }, withCredentials: true });
 
             if (response.data.success) {
                 toast.success(response.data.message);
@@ -227,7 +227,9 @@ const OrderCard = ({ order }) => {
             setIsProcessing(true);
 
             const { data: razorpayOrder } =
-                await axios.post("https://portfolio-fiverr.onrender.com/api/v1/gig/order/payRemainingAmount", { orderId });
+                await axios.post("https://portfolio-fiverr.onrender.com/api/v1/gig/order/payRemainingAmount", { orderId },{
+                    withCredentials: true,
+                });
 
             const options = {
                 key: "rzp_test_REPEeGSfqJEoFd",
@@ -242,6 +244,8 @@ const OrderCard = ({ order }) => {
                         await axios.post('https://portfolio-fiverr.onrender.com/api/v1/gig/order/verifyRemainingPayment', {
                             orderId,
                             ...response,
+                        },{
+                            withCredentials: true,
                         });
 
                         toast.success("Payment Successful!");
