@@ -21,7 +21,8 @@ const clientProjectRoute = require('./routes/Admin/clientProjectRoutes')
 app.use(cors({
     origin: [
         "http://localhost:3000", // Admin
-        process.env.FRONTEND_URL  // Client
+        // process.env.FRONTEND_URL  // Client
+        'http://localhost:5173'
       ],
     credentials: true
 }));

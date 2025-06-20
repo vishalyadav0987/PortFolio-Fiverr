@@ -8,15 +8,17 @@ import toast from 'react-hot-toast';
 import Spinner from '../../Components/Spinner/Spinner';
 
 const Login = () => {
-  const { loading, setLoading, setAuthUser, setIsAuthenticate } = useAuthContext();
+  const {  setAuthUser, setIsAuthenticate } = useAuthContext();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
 
+  const [loadingLog, setLoadingLog] = useState(false);
+
   const handleLoginSubmit = async(e) => {
     e.preventDefault();
-    setLoading(true);
+    setLoadingLog(true);
     try {
       const response = await axiosInstance.post(
         '/user/sign-in',
@@ -38,7 +40,7 @@ const Login = () => {
       setAuthUser(null);
     }
     finally {
-      setLoading(false);
+      setLoadingLog(false);
     }
   }
   
@@ -85,7 +87,7 @@ const Login = () => {
             justifyContent: "center"
           }}>
             {
-              loading ? (
+              loadingLog ? (
                 <Spinner />
               ) : ("Login")
             }

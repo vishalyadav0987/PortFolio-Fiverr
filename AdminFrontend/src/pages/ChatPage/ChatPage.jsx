@@ -40,7 +40,9 @@ const ChatPage = ({ splashImage }) => {
 
   const { getMessageByOrderId, messageLoading } = useGetMessageByOrderId()
 
+
   const sendMessageHandle = async (e) => {
+
     e.preventDefault();
     if (!messageInput.trim()) {
       toast.error("Message cannot be empty");
@@ -465,10 +467,10 @@ const ChatPage = ({ splashImage }) => {
                 placeholder="Type your message..."
                 className="message-input"
               />
-              <button type="submit" className="send-btn">
+              <button type="submit" className="send-btn" disabled={sendMessLoading}>
                
                 {
-                  messageLoading ? "sending..." :  <FaPaperPlane />
+                  sendMessLoading ? "sending..." :  <FaPaperPlane />
                 }
               </button>
             </form>
