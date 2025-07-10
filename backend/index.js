@@ -27,6 +27,8 @@ app.use(cors({
     credentials: true
 }));
 
+require('./config/cornJob'); // Importing the cron job
+
 app.use(express.json({ limit: '50mb' }));
 app.use(cookieParser());
 app.use(bodyParser.json({ limit: '50mb' }));
