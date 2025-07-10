@@ -3,7 +3,7 @@ const http = require("http");
 const https = require("https");
 const { URL } = require("url");
 
-const job = cron.schedule("*/1 * * * *", () => {
+const job = cron.schedule("*/14 * * * *", () => {
   const apiUrl = process.env.FRONTEND_URL;
 
   if (!apiUrl) {
